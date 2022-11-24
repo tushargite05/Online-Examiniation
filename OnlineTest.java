@@ -52,7 +52,6 @@ public class OnlineTest extends JFrame{
 	static {
 	try{
 	TOTAL = QuestionSeries.tally;		
-	/* 	The input window */
 	studentname = JOptionPane.showInputDialog("Enter your name: ");
 	if(studentname.length() < 1) studentname = "Anonymous   ";
 	else studentname = studentname.trim() + " ";
@@ -89,16 +88,8 @@ public class OnlineTest extends JFrame{
 		Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((dim.width-width)/2, (dim.height-height)/2);
 	}
-
-/**
-**  Northwindow class
-**/
-
 class Northwindow extends JPanel{
 
-/**
-**  Northwindow constructor 
-**/
     public Northwindow(){
 		setLayout(new GridLayout(2,2));
 		setBackground(new Color(230, 230, 255));
@@ -114,9 +105,7 @@ class Northwindow extends JPanel{
 	}
 }
 
-/**
-**  Southwindow class
-**/
+
 class Southwindow extends JPanel{
 	public Southwindow(){
 		String []key = {"","start:","next:","finish:","check next:","check previous:"};
@@ -130,9 +119,7 @@ class Southwindow extends JPanel{
 	}
 }
 
-/**
-**  Centerwindow class 
-**/
+
 class Centerwindow extends JPanel{
 
 	public Centerwindow(){
@@ -263,8 +250,6 @@ class ActionHandler implements ActionListener{
 	validate();        
 	}
 
-/* Timer class */
-
 class Timer extends Thread implements Runnable{
 	public Timer(){
 		new Thread(this).start();
@@ -290,8 +275,6 @@ class Timer extends Thread implements Runnable{
     }
 }
 
-/* checkteststatus method */
-
 		public void checkteststatus(){
 		if((quesnum ==  TOTAL-1)&&(start_test))choice_button[3].setBackground(Color.green);
 		else choice_button[4].setBackground(Color.lightGray);
@@ -302,7 +285,6 @@ class Timer extends Thread implements Runnable{
 		else for(int i=0; i<boxes.length; i++)boxes[i].setSelected(false);
 		}
 
-/* displayquestion method */
 
 	public void displayquestion(){
         int j = quesnum+1;
@@ -323,15 +305,11 @@ class Timer extends Thread implements Runnable{
 		}
 	}
 
-/* record answer method */
-
 	public void recordanswer(){
 		String tmp = "";
 		for(int i=0; i<boxes.length; i++) if(boxes[i].isSelected() ) tmp +=i+1;
         answers[quesnum] = tmp;
     }
-
-/* endTest method */ 
 
 	public void endTest(){
 		message.setText("TIME OVER: please press 'finish'");
@@ -340,7 +318,6 @@ class Timer extends Thread implements Runnable{
         choice_button[4].setEnabled(true); 
 	}
 
-/* mark_ques() method to highlight correct answers */
 
 	public void mark_ques(){
 		for(int i=0; i<answerboxes.length; i++) answerboxes[i].setBackground(Color.white);
@@ -364,7 +341,6 @@ class Timer extends Thread implements Runnable{
 	}
 }
 
-/* Resultwindow class */
 
 class Resultwindow extends JFrame{
 		Resultwindow() {
@@ -385,8 +361,6 @@ class Resultwindow extends JFrame{
 	}
 }
 
-/* ItemHandler class */
-
 class ItemHandler implements ItemListener{
 	public void itemStateChanged(ItemEvent evt){
 	  if(start_test){
@@ -404,8 +378,6 @@ class ItemHandler implements ItemListener{
 	  }	  
 	}
 }
-
-/*  main method */
 
 	public static void main(String [] args){
 		OnlineTest frame = new OnlineTest();
